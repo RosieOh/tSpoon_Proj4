@@ -1,4 +1,9 @@
 package kr.co.tspoon.service;
 
-public class MemberServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberServiceImpl implements MemberService {
+
 }

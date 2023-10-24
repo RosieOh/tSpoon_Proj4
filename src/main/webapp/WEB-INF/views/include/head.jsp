@@ -11,4 +11,5 @@
     <title>tSpoon Community</title>
     <link rel="stylesheet" href="${path1}/resources/css/MainStyle.css">
     <script src="${path1}/resources/js/MainMotion.js"></script>
+
 </head>
