@@ -4,15 +4,15 @@
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
-
+<script src="${path1}/resources/js/MainMotion.js"></script>
 <section class="parallax">
-    <img src="hill1.png" id="hill1">
-    <img src="hill2.png" id="hill2">
-    <img src="hill3.png" id="hill3">
-    <img src="hill4.png" id="hill4">
-    <img src="hill5.png" id="hill5">
-    <img src="tree.png" id="tree">
+    <img src="${path1}/resources/image/hill1.png" id="hill1">
+    <img src="${path1}/resources/image/hill2.png" id="hill2">
+    <img src="${path1}/resources/image/hill3.png" id="hill3">
+    <img src="${path1}/resources/image/hill4.png" id="hill4">
+    <img src="${path1}/resources/image/hill5.png" id="hill5">
+    <img src="${path1}/resources/image/tree.png" id="tree">
     <h2 id="text">tSpoon Community</h2>
-    <img src="leaf.png" id="leaf">
-    <img src="plant.png" id="plant">
+    <img src="${path1}/resources/image/leaf.png" id="leaf">
+    <img src="${path1}/resources/image/plant.png" id="plant">
 </section>

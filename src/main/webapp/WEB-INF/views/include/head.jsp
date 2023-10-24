@@ -9,6 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tSpoon Community</title>
-    <link rel="stylesheet" href="${path1}/resource/MainStyle.css">
-    <script src="${path1}/resource/MainMotion.js"></script>
+    <link rel="stylesheet" href="${path1}/resources/css/MainStyle.css">
+    <script src="${path1}/resources/js/MainMotion.js"></script>
 </head>
