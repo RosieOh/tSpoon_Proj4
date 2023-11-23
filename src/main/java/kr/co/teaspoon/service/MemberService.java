@@ -13,5 +13,8 @@ public interface MemberService {
     public void memberDelete(String id) throws Exception;
     public Member signIn(String id) throws Exception;
     public boolean loginCheck(String id, String pw) throws Exception;
-    public Member loginAjax(Member member) throws Exception;
+    public Member login(String id) throws Exception;
+
+    public String findByEmail(String email) throws Exception;
+    public String findPassword(String id, String email) throws Exception;
 }

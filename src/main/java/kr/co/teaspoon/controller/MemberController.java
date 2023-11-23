@@ -8,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -80,8 +79,15 @@ public class MemberController {
         out.println(json.toString());
     }
 
-    //회원 가입 - 회원 가입 처리
-    @RequestMapping(value="insert.do", method = RequestMethod.POST)
+    // 회원 가입 폼 로딩 (GET 요청)
+    @GetMapping("insert-form")
+    public String getMemberInsertForm(Model model) {
+        // 폼을 로딩하는 로직 추가
+        return "/member/memberInsert";
+    }
+
+    // 회원 가입 - 회원 가입 처리 (POST 요청)
+    @PostMapping("insert.do")
     public String memberWrite(Member member, Model model) throws Exception {
         String ppw = member.getPw();
         String pw = pwEncoder.encode(ppw);
@@ -90,6 +96,16 @@ public class MemberController {
         return "redirect:/";
     }
 
+//    //회원 가입 - 회원 가입 처리
+//    @RequestMapping(value="insert.do", method = RequestMethod.POST)
+//    public String memberWrite(Member member, Model model) throws Exception {
+//        String ppw = member.getPw();
+//        String pw = pwEncoder.encode(ppw);
+//        member.setPw(pw);
+//        memberService.memberInsert(member);
+//        return "redirect:/";
+//    }
+
     //로그인 폼 로딩
     @RequestMapping("login.do")
     public String memberLoginForm(Model model) throws Exception {
@@ -97,39 +113,64 @@ public class MemberController {
     }
 
     //로그인을 컨트롤러에서 처리
+    // 로그인 처리
     @PostMapping("signin.do")
     public String memberSignIn(@RequestParam String id, @RequestParam String pw, Model model) throws Exception {
         Member mem = memberService.signIn(id);
-        if(mem!=null){
+
+        if (mem != null) {
             boolean loginSuccess = pwEncoder.matches(pw, mem.getPw());
-            if(loginSuccess){
-                session.setAttribute("member", mem);
-                session.setAttribute("sid", id);
-                return "redirect:/";
-            } else {
-                return "redirect:login.do";
+            if (loginSuccess) {
+                session.setAttribute("sid", id); // 로그인 세션 설정
+                return "redirect:/"; // 로그인 성공 시 메인 페이지로 리다이렉트
             }
-        } else {
-            return "redirect:login.do";
         }
+
+        // 로그인 실패 시 에러 메시지를 모델에 추가하고 로그인 페이지로 이동
+        model.addAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다.");
+        return "/member/loginForm";
     }
     //서비스에서 로그인 로직 처리
     @RequestMapping(value = "loginpro.do", method = RequestMethod.POST)
     public String memberLogin(@RequestParam String id, @RequestParam String pw, Model model) throws Exception {
         boolean ps = memberService.loginCheck(id, pw);
-        if(ps){
+        if (ps) {
             session.setAttribute("sid", id);
-            return "redirect:/";
+            return "redirect:/main";
         } else {
-            return "redirect:login.do";
+            // 로그인 실패 시 메시지를 모델에 추가
+            model.addAttribute("loginError", "아이디와 비밀번호가 일치하지 않습니다.");
+            return "/member/loginForm"; // 로그인 실패 시 다시 로그인 페이지로 이동
         }
     }
-    //로그아웃
+
     @GetMapping("logout.do")
     public String memberLogout(HttpSession session) throws Exception {
         session.invalidate();
         return "redirect:/";
     }
+
+    // 아이디 찾기 폼 로딩
+    @GetMapping("find_id.do")
+    public String findIdForm() {
+        return  "/member/findIdForm";
+    }
+
+    // 아이디 찾기 처리
+    @PostMapping("find_id_process.do")
+    public String findIdProcess(@RequestParam String email, Model model) throws Exception {
+        // 이메일을 기반으ㄹ 아이디를 찾음
+        String foundId = memberService.findByEmail(email);
+        if (foundId != null) {
+            model.addAttribute("foundId", foundId);
+            return "/member/foundId";
+        } else {
+            model.addAttribute("message", "일치하는 이메일 주소로 등록된 아이디가 없습니다.");
+            return "/member/findIdForm";
+        }
+    }
+
+    //회원정보 변경
     //회원정보 변경
     @RequestMapping(value="update.do", method=RequestMethod.POST)
     public String memberUpdate(Member mem, Model model) throws Exception {
@@ -148,26 +189,26 @@ public class MemberController {
         session.invalidate();
         return "redirect:/";
     }
-    //Ajax를 이용하는 로그인 방법
-    @RequestMapping(value="loginCheck.do", method = RequestMethod.POST)
-    public String memberLoginCtrl(@RequestParam String id, @RequestParam String pw, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
-        //session.getAttribute("member");
-        Member mdto = new Member();
-        mdto.setId(id);
-        mdto.setPw(pw);
-        Member member = memberService.loginAjax(mdto);
-        boolean mat = pwEncoder.matches(mdto.getPw(), member.getPw());
-        if(member!=null && mat) {
-            session.setAttribute("member", member);
-            session.setAttribute("sid", member.getId());
-            rttr.addFlashAttribute("msg", "로그인 성공");
-            String referer = request.getHeader("Referer");
-            return "redirect:"+referer;
-            //return "redirect:/";
+
+    // 비밀번호 찾기 폼 로딩
+    @GetMapping("find_pw.do")
+    public String findPwForm() {
+        return  "/member/findPwForm";
+    }
+
+    // 비밀번호 찾기 처리
+    @PostMapping("find_pw_process.do")
+    public String findPasswordProcess(@RequestParam String id, @RequestParam String email, Model model) throws Exception {
+        // 아이디와 이메일을 기반으로 비밀번호를 찾음
+        String newPassword = memberService.findPassword(id, email);
+        if (newPassword != null) {
+            // 새로운 비밀번호를 생성하여 사용자에게 보여줄 수도 있음
+            model.addAttribute("newPassword", newPassword);
+            return "/member/foundPassword"; // 비밀번호를 찾은 페이지로 이동
         } else {
-            session.setAttribute("member", null);
-            rttr.addFlashAttribute("msg", "로그인 실패");
-            return "redirect:loginForm.do";
+            model.addAttribute("message", "일치하는 정보로 등록된 비밀번호가 없습니다.");
+            return "/member/findPasswordForm"; // 비밀번호를 찾지 못한 경우 다시 비밀번호 찾기 폼으로 이동
         }
     }
+
 }

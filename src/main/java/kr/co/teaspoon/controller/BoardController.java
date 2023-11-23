@@ -2,8 +2,8 @@ package kr.co.teaspoon.controller;
 
 import kr.co.teaspoon.dto.Board;
 import kr.co.teaspoon.service.BoardService;
-import kr.co.teaspoon.service.BoardServiceImpl;
-import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +17,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
+    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @Autowired
     private BoardService boardService;
 
     @GetMapping("list.do")		//board/list.do
     public String getBoardList(Model model) throws Exception {
+        logger.info("게시판 페이지 진입");
         List<Board> boardList = boardService.boardList();
         model.addAttribute("boardList", boardList);
         return "/board/boardList";
