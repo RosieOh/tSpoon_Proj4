@@ -46,24 +46,10 @@
                     <div class="navbar-start"></div>
                     <div class="navbar-end">
                         <div class="navbar-item">
-
                             <div class="navbar-item has-dropdown is-hoverable">
-
-                                <a class="navbar-link" href="${path1}/edumag/list.do">
-                                    교육매거진
-                                </a>
-
-                                <div class="navbar-dropdown">
-                                    <a class="navbar-item" href="${path1}/edumag/list.do" style="font-size: 30px;">스페셜칼럼</a>
-                                </div>
-                            </div>
-
-                            <div class="navbar-item has-dropdown is-hoverable">
-
                                 <a class="navbar-link" href="${path1}/free/list.do">
                                     커뮤니티
                                 </a>
-
                                 <div class="navbar-dropdown">
                                     <a class="navbar-item" href="${path1}/free/list.do" style="font-size: 30px;">자유게시판</a>
                                     <a class="navbar-item" href="${path1}/booktalk/list.do" style="font-size: 30px;">교재게시판</a>

@@ -52,10 +52,6 @@
         <bean id="guestBookDAO" class="kr.co.teaspoon.dao.GuestBookDAOImpl"/>
         <bean id="fileService" class="kr.co.teaspoon.service.FileServiceImpl"/>
         <bean id="fileDAO" class="kr.co.teaspoon.dao.FileDAOImpl"/>
-        <bean id="edumagService" class="kr.co.teaspoon.service.EdumagServiceImpl" />
-        <bean id="edumagDAO" class="kr.co.teaspoon.dao.EdumagDAOImpl" />
-        <bean id="edumagCommentService" class="kr.co.teaspoon.service.EdumagCommentServiceImpl" />
-        <bean id="edumagCommentDAO" class="kr.co.teaspoon.dao.EdumagCommentDAOImpl" />
         <bean id="eventService" class="kr.co.teaspoon.service.EventServiceImpl" />
         <bean id="eventDAO" class="kr.co.teaspoon.dao.EventDAOImpl" />
         <bean id="winnerService" class="kr.co.teaspoon.service.WinnerServiceImpl" />

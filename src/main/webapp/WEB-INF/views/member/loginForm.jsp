@@ -22,7 +22,7 @@
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
                 <div class="box">
-                    <img src="${path1}/resources/img/logo.png" alt="Bulma Hotel" style="width: 160px; height: 100%;" />
+                    <img src="${path1}/resources/img/logo1111.png" alt="Bulma Hotel" style="width: 160px; height: 100%;" />
                     <br>
                     <br/>
                     <form action="${path1}/member/loginpro.do" method="post" name="loginForm">

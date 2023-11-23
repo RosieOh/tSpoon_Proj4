@@ -66,25 +66,6 @@
                         </c:choose>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-info" style="background: #CBAACB;">
-                        <p class="title">교육 매거진</p>
-                        <p class="subtitle">With an image</p>
-                        <div class="content">
-                            <c:forEach items="${edumagList}" var="edumag" varStatus="status">
-                                <div class="edumag-item">
-                                    <h3>${edumag.title}</h3>
-                                    <p>${edumag.description}</p>
-                                    <figure class="image is-4by3">
-                                        <img src="${edumag.imageUrl}" alt="${edumag.title} 이미지">
-                                    </figure>
-                                    <p><a href="${path1}/edumag/detail.do?id=${edumag.id}">자세히 보기</a></p>
-                                </div>
-                                <hr style="margin: 0.5rem 0;"/>
-                            </c:forEach>
-                        </div>
-                    </article>
-                </div>
             </div>
             <div class="tile is-parent">
                 <article class="tile is-child notification is-danger" style="background: #FFCCB6;">
@@ -95,17 +76,6 @@
                     </div>
                 </article>
             </div>
-        </div>
-        <div class="tile is-parent">
-            <article class="tile is-child notification is-success" style="background: #F3B0C3;">
-                <div class="content">
-                    <p class="title">교재 신간</p>
-                    <p class="subtitle">이번 달 출시된 교재</p>
-                    <div class="content">
-                        <!-- Content -->
-                    </div>
-                </div>
-            </article>
         </div>
     </div>
 </div>

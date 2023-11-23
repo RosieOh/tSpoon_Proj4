@@ -94,26 +94,6 @@
         border-radius: 20px;
     }
 
-    /*.snb .item1 {*/
-    /*    background-image: url("images/tel.png");*/
-    /*}*/
-
-    /*.snb .item2 {*/
-    /*    background-image: url("images/instagram.png");*/
-    /*}*/
-
-    /*.snb .item3 {*/
-    /*    background-image: url("images/youtube.png");*/
-    /*}*/
-
-    /*.snb .item4 {*/
-    /*    background-image: url("images/facebook.png");*/
-    /*}*/
-
-    /*.snb .item5 {*/
-    /*    background-image: url("images/twitter.png");*/
-    /*}*/
-
     .locate {
         float: right;
     }
@@ -132,8 +112,6 @@
         line-height: 48px;
         min-height: 48px;
     }
-
-    /*.ft_link li { line-height: 48px; }*/
     #sel {
         height: 40px;
         width: 200px;
@@ -189,28 +167,28 @@
 <footer class="ft" id="ft">
     <div class="ft_wrap2">
         <p class="copyright">
-            <span>(주)Week</span>
+            <span>(주)TeamLimked</span>
             <span>서울시 금천구 가산로9길 54</span>
-            <span>대표자 서광</span>
-            <span>사업자등록번호 119-81-19350</span>
-            <span>통신판매신고번호 제18-439호</span>
-            <span class="end">부가통신사업신고 016712</span>
+            <span>대표자 오태훈</span>
+            <span>사업자등록번호 123-45-678910</span>
+            <span>통신판매신고번호 제12-345호</span>
+            <span class="end">부가통신사업신고 010920</span>
         </p>
         <p class="copyright">
-            <span>윜 (Week) 1577-0902</span>
-            <span>위클리 (Weekly) 1577-0218</span>
-            <span>위켄드 (Weekend) 1577-6226</span>
-            <span>윜스토어 (WeekStore) 1577-1533</span>
+            <span>MediRing 1577-0902</span>
+            <span>멋쟁이 사자처럼 1577-0218</span>
+            <span>한남대학교 1577-6226</span>
+            <span>멘도롱 대학 1577-1533</span>
         </p>
         <p class="locate">
             <select name="sel" id="sel" onchange="loc()">
                 <option value="">FAMILY LINK</option>
-                <option value="https://chunjaetext.co.kr/">위클리</option>
-                <option value="http://www.milkt.co.kr/Main/Main_new">위켄드</option>
-                <option value="http://www.prinpia.co.kr/">윜스토어</option>
-                <option value="http://www.chunjaeTalk.co.kr">위키톡</option>
+                <option value="https://chunjaetext.co.kr/">천재교육</option>
+                <option value="http://www.milkt.co.kr/Main/Main_new">밀크T</option>
+                <option value="http://www.prinpia.co.kr/">프린피아</option>
+                <option value="http://www.chunjaeTalk.co.kr">천재토크</option>
             </select>
         </p>
-        <p class="cp">COPYRIGHT 1981-2023 Week EDUCATION INC. ALL RIGHTS RESERVED.</p>
+        <p class="cp">COPYRIGHT 2023 TeamLimked INC. ALL RIGHTS RESERVED.</p>
     </div>
 </footer>

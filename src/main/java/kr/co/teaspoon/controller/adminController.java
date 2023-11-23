@@ -39,12 +39,6 @@ public class adminController {
     private BookTalkService bookTalkService;
 
     @Autowired
-    private EdumagService edumagService;
-
-    @Autowired
-    private EdumagCommentService edumagCommentService;
-
-    @Autowired
     private EventService eventService;
 
     @Autowired
@@ -349,86 +343,6 @@ public class adminController {
         dto.setContent(request.getParameter("content"));
         bookTalkService.bookTalkEdit(dto);
         return "redirect:list.do";
-    }
-
-    @GetMapping("edumagList.do")
-    public String getedumagList(HttpServletRequest request, Model model) throws Exception {
-        String type = request.getParameter("type");
-        String keyword = request.getParameter("keyword");
-        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
-
-        System.out.println(type + ", " + keyword + ", " + curPage);
-
-        Page page = new Page();
-        page.setPostCount(9);
-        page.setSearchType(type);
-        page.setSearchKeyword(keyword);
-        int total = edumagService.totalCount(page);
-
-        page.makeBlock(curPage, total);
-        page.makeLastPageNum(total);
-        page.makePostStart(curPage, total);
-        List<Edumag> edumagList = edumagService.edumagList(page);
-
-        model.addAttribute("type", type);
-        model.addAttribute("keyword", keyword);
-        model.addAttribute("page", page);
-        model.addAttribute("curPage", curPage);
-        //로그인 한 아이디
-        model.addAttribute("edumagList", edumagList);
-        return "/admin/edumag/edumagList";
-    }
-
-    @GetMapping("edumagDetail.do")
-    public String getedumagDetail(HttpServletRequest request, Model model) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
-        //에듀매거진 게시글 상세보기
-        Edumag dto = edumagService.edumagDetail(no);
-        //에듀매거진 게시글의 댓글 조회
-        List<EdumagComment> edumagComments = edumagCommentService.edumagCommentList(no);
-        model.addAttribute("dto", dto);
-        model.addAttribute("edumagCommentList", edumagComments);
-        return "/admin/edumag/edumagDetail";
-    }
-
-    @GetMapping("edumagInsert.do")
-    public String edumagInsertForm() {
-        return "/admin/edumag/edumagInsert"; // Edumag 게시판 글 작성 폼 뷰로 이동
-    }
-
-    @PostMapping("edumagInsert.do")
-    public String edumagInsert(HttpServletRequest request, Model model) throws Exception {
-        Edumag dto = new Edumag();
-        dto.setTitle(request.getParameter("title"));
-        dto.setContent(request.getParameter("content"));
-        edumagService.edumagInsert(dto);
-        return "redirect:edumagList.do"; // 글 작성 후 Edumag 게시판 목록으로 리다이렉트
-    }
-
-    @GetMapping("edumagDelete.do")
-    public String edumagDelete(HttpServletRequest request, Model model) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
-        edumagService.edumagDelete(no);
-        return "redirect:edumagList.do";
-    }
-
-    @GetMapping("edumagEdit.do")
-    public String edumagEditForm(HttpServletRequest request, Model model) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
-        Edumag dto = edumagService.edumagDetail(no);
-        model.addAttribute("dto", dto);
-        return "/admin/edumag/edumagEdit"; // Edumag 게시판 수정 폼 뷰로 이동
-    }
-
-    @PostMapping("edumagEdit.do")
-    public String edumagEdit(HttpServletRequest request, Model model) throws Exception {
-        int no = Integer.parseInt(request.getParameter("no"));
-        Edumag dto = new Edumag();
-        dto.setNo(no);
-        dto.setTitle(request.getParameter("title"));
-        dto.setContent(request.getParameter("content"));
-        edumagService.edumagEdit(dto);
-        return "redirect:edumagList.do"; // 수정 후 Edumag 게시판 목록으로 리다이렉트
     }
 
     // Event 컨트롤러
