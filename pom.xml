@@ -1,15 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>kr.co.tspoon</groupId>
-  <artifactId>tspoon</artifactId>
+  <groupId>kr.co.teaspoon</groupId>
+  <artifactId>pro3</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>tspoon Maven Webapp</name>
+  <name>pro3 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
     <java-version>17</java-version>
     <org.springframework-version>5.3.20</org.springframework-version>
+    <org.aspectj-version>1.9.0</org.aspectj-version>
     <org.slf4j-version>2.0.0</org.slf4j-version>
   </properties>
   <dependencies>
@@ -29,13 +30,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${org.springframework-version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13</version>
-      <scope>test</scope>
     </dependency>
 
     <!-- aspectj -->
@@ -85,7 +79,7 @@
           <artifactId>jmxri</artifactId>
         </exclusion>
       </exclusions>
-      <!--      <scope>runtime</scope>-->
+      <scope>runtime</scope>
     </dependency>
 
     <!-- 의존성 주입 라이브러리 -->
@@ -122,17 +116,17 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- 스프링 테스트 도구 - spring-kr.co.tspoon.test : 스프링mvc 버전과 동일 -->
+    <!-- 스프링 테스트 도구 - spring-test : 스프링mvc 버전과 동일 -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>${org.springframework-version}</version>
     </dependency>
-    <!-- war 플러그인 -->
+
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-war-plugin</artifactId>
-      <version>3.2.3</version>
+      <version>3.2.0</version>
     </dependency>
 
     <!-- lombok - 1.18.22 -->
@@ -141,13 +135,6 @@
       <artifactId>lombok</artifactId>
       <version>1.18.22</version>
       <scope>provided</scope>
-    </dependency>
-
-    <!-- HicariCP 3.4.1 -->
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-      <version>3.4.1</version>
     </dependency>
 
     <!-- DB 접속 로그를 기록하는 라이브러리 - log4jdbc-log4j2-jdbc4 1.16 -->
@@ -171,7 +158,7 @@
       <version>1.4</version>
     </dependency>
 
-    <!-- 마리아DB 설정 3.1.4 -->
+    <!-- 마리아 DB 연결 라이브러리 - mariadb-java-client : 마리아DB 버전과 호환되는 것 -->
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
@@ -197,13 +184,6 @@
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
       <version>1.3.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
-      <scope>compile</scope>
     </dependency>
 
     <!-- 구글 JSON : gson 2.7, jsoup 1.12.1, json 20200518 -->
@@ -249,7 +229,7 @@
       <version>5.4.0</version>
     </dependency>
 
-    <!-- 스프링 암호화 라이브러리 설정 spring-security-kr.co.tspoon.config 스프링mvc 버전과 동일 -->
+    <!-- 스프링 암호화 라이브러리 설정 spring-security-config 스프링mvc 버전과 동일 -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
@@ -314,49 +294,22 @@
       <artifactId>jaxb-api</artifactId>
       <version>2.3.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+          <version>RELEASE</version>
+          <scope>compile</scope>
+      </dependency>
 
-    <dependency>
-      <groupId>javax.annotation</groupId>
-      <artifactId>javax.annotation-api</artifactId>
-      <version>1.3.2</version>
-    </dependency>
+      <dependency>
+        <groupId>javax.annotation</groupId>
+        <artifactId>javax.annotation-api</artifactId>
+        <version>1.3.2</version>
+      </dependency>
 
-    <!-- 웹소켓 -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-websocket</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.websocket</groupId>
-      <artifactId>javax.websocket-api</artifactId>
-      <version>1.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.websocket</groupId>
-      <artifactId>javax.websocket-client-api</artifactId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-messaging</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
   </dependencies>
   <build>
-    <finalName>tspoon</finalName>
+    <finalName>pro3</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -389,16 +342,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.2.1</version>
         <configuration>
-          <mainClass>org.kr.co.tspoon.test.int1.Main</mainClass>
-        </configuration>
-      </plugin>
-      <!-- xml을 java로 설정 -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <mainClass>org.test.int1.Main</mainClass>
         </configuration>
       </plugin>
     </plugins>
