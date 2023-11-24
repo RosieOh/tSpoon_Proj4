@@ -6,7 +6,7 @@
 <c:set var="path1" value="${pageContext.request.contextPath }" />
 <div class="column is-2">
     <aside class="menu">
-				<span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5">
+				<span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="background: linear-gradient(to right, #71AEE8, #77E9CE);">
 					이벤트
 				</span>
         <ul class="menu-list">
@@ -17,7 +17,7 @@
                 <a href="${path1}/admin/winnerList.do">이벤트 당첨자</a>
             </li>
             <li>
-                <a href="${path1}/admin/surveyList.do">윜이슈(설문)</a>
+                <a href="${path1}/admin/surveyList.do">설문조사</a>
             </li>
         </ul>
     </aside>

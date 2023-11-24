@@ -35,7 +35,7 @@
 			<div class="conwrap">
 				<div class="box">
 					<%--<h6>이벤트 게시판</h6>--%>
-					<span class="title">이벤트 게시판</span>
+					<span class="title" >이벤트 게시판</span>
 				</div>
 				<br>
 				<br>

@@ -6,7 +6,7 @@
 <c:set var="path1" value="${pageContext.request.contextPath }" />
 <div class="column is-2">
     <aside class="menu">
-				<span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5">
+				<span class="box has-text-white has-text-weight-semibold has-text-centered is-size-5" style="background: linear-gradient(to right, #71AEE8, #77E9CE);">
 					커뮤니티
 				</span>
         <ul class="menu-list">

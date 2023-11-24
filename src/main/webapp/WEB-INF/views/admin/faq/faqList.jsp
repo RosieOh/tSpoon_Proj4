@@ -51,7 +51,7 @@
 		<div class="column is-10">
 			<div class="conwrap">
 				<div class="box">
-					<span class="title">자주 묻는 질문</span>
+					<span class="title" >자주 묻는 질문</span>
 				</div>
 			</div>
 			<section class="accordions" style="padding-top: 50px;">

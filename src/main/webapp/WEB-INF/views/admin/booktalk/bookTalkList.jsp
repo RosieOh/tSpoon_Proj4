@@ -56,6 +56,7 @@
 	<jsp:include page="../../include/hd.jsp"></jsp:include>
 	<div class="columns">
 		<jsp:include page="../../include/head.jsp"></jsp:include>
+		<jsp:include page="../include/admin_eventSideMenu.jsp" />
 		<div class="column is-10">
 			<div class="conwrap">
 				<div class="box">

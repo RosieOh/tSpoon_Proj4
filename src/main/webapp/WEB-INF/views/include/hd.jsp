@@ -65,7 +65,7 @@
                                 <div class="navbar-dropdown">
                                     <a class="navbar-item" href="${path1}/event/list.do" style="font-size: 30px;">이벤트</a>
                                     <a class="navbar-item" href="${path1}/winner/list.do" style="font-size: 30px;">이벤트 당첨자</a>
-                                    <a class="navbar-item" href="${path1}/survey/list.do" style="font-size: 30px;">윜이슈(설문)</a>
+                                    <a class="navbar-item" href="${path1}/survey/list.do" style="font-size: 30px;">설문조사</a>
                                 </div>
                             </div>
 
